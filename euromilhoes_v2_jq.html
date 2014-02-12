@@ -57,17 +57,18 @@
 			
 			// função para sortear numeros
 			// vai servir tanto para números como estrelas
-			// numeroMax: 				representa número máximo a sortear
+			// numeroMin:   representa número mínimo a sortear
+			// numeroMax: 	representa número máximo a sortear
 			// quantidadeNumeroSortear:	representa número de elementos a sortear
 			
-			function sorteiaNumeros(numeroMax, quantidadeNumeroSortear){
+			function sorteiaNumeros(numeroMin, numeroMax, quantidadeNumeroSortear){
 				// armazena os vários números para sorteio
 				var tombola = new Array();
 				// armazena os números sorteados
 				var numSorteados = new Array();
 				// encher tombola com todos os números possíveis para sorteio
-				for(var i=0; i<numeroMax; i++ ) {
-					tombola.push(i+1);
+				for(var i=numeroMin; i<= numeroMax; i++ ) {
+					tombola.push(i);
 				}
 			
 				// sortear números
@@ -124,13 +125,13 @@
 			}
 			
 			function geraChave(){
-				var numeros = sorteiaNumeros(MAXN, NN);
+				var numeros = sorteiaNumeros(MINN,MAXN, NN);
 				//alert("Números: " + numeros);
 				//escreveNumeros(numeros, "numeros");
 				
 				escreveNumerosComJQuery_Compressed(numeros, "numeros");
 				
-				var estrelas = sorteiaNumeros(MAXE, NE);
+				var estrelas = sorteiaNumeros(MINE,MAXE, NE);
 				//alert("Estrelas: " + estrelas);
 				//escreveNumeros(estrelas, "estrelas");
 				escreveNumerosComJQuery_Compressed(estrelas, "estrelas");
