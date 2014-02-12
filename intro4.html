@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<style>
+		.c3{
+			color:blue;
+		}
+		#text{
+			width:400px;
+			background-color: #cccccc;
+			font-family: Verdana;
+			padding:10px;
+			border-radius:15px;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			$("#efeito").click(function(){
+				$("#text").toggle(5000);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<h1>Efeitos e animação</h1>
+	
+	<div id="efeito">Ver/ocultar texto</div><br>
+	<div id="text">
+    <h1>Texto</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris placerat risus ac enim pulvinar scelerisque ornare augue sollicitudin. Sed posuere enim vel eros tincidunt pulvinar. Nullam vitae dui elit, et ornare neque. Ut non leo libero, quis eleifend odio. Aliquam mi turpis, interdum in laoreet a, semper vel purus. Fusce in erat et nulla iaculis scelerisque. Quisque tortor justo, consectetur sed hendrerit non, cursus vitae turpis.
+    </p>
+    </div>
+	
+	<br><br>
+	<a href="intro.html">Voltar</a>
+	<br><br><br>
+</body>
+</html>
+

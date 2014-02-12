@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<style>
+		.c1{
+			color:red;
+		}
+		.c2{
+			color:green;
+		}
+		.c3{
+			color:blue;
+		}
+	</style>
+	
+	<script>
+	$(document).ready(function(){
+		// atribuição de evento através do tipo de elemento HTML
+		$("button").click(function(){
+			alert('Clicou no botão.');
+		});
+		
+		// atribuição de evento através do ID
+		$("#p2").click(function(){
+			alert('Clicou no parágrafo 2.');
+		});
+		
+		// atribuição de evento através da class
+		$(".c3").click(function(){
+			alert('Clicou no parágrafo 3.');
+		});
+	});
+	</script>
+	
+</head>
+<body>
+	<h1>Seleção de elementos HTML com JQuery</h1>
+	
+	<ul>
+		<li><h3>Por elemento HTML</h3>
+			<button type="button">Botão 1</button>
+			<button type="button">Botão 2</button>
+			<button type="button">Botão 3</button>
+			<button type="button">Botão 4</button>
+			<br><br>
+		</li>
+		
+		<li><h3>Por id</h3>
+			<p id="p1">Parágrafo 1</p>
+			<p id="p2">Parágrafo 2 (clique neste!)</p>
+			<p id="p3">Parágrafo 3</p>
+			<br><br>
+		</li>
+		
+		<li><h3>Por classe</h3>
+			<p class="c1">Parágrafo 1</p>
+			<p class="c2">Parágrafo 2</p>
+			<p class="c3">Parágrafo 3 (clique neste!)</p>
+			<br><br>
+		</li>
+	
+	</ul>
+	<br><br><br>
+	<a href="intro.html">Volar</a>
+</body>
+</html>

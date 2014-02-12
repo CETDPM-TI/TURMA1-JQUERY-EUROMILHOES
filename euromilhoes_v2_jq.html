@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<style>
+			/* folha de estilos */
+			ul li {
+				font-size: 30px;
+				font-family: "Verdana, sans-serif";
+				font-weight: bold;
+				text-align: center;
+				display: inline-block;
+				width : 50px;
+				height: 50px;
+				border-radius: 5px;
+				border-style: solid;
+				border-width: 1px;
+				border-color: black;
+				margin :5px;
+			}
+			
+			ul.estrelas {
+				margin-left: 340px;
+				margin-top: -78px;
+			}
+
+			ul.numeros li{
+				background-color: gold;
+				color: navy;
+			}
+
+			ul.estrelas li {
+				background-color: lime;
+				color: black;
+			}
+			
+		</style>
+		<script>
+		
+			// # de numeros e # de estrelas que compoe a chave
+			const NN = 5;
+			const NE = 2;
+
+			// valor minimo e maximo para as estrelas 
+			const MINE = 1;
+			const MAXE = 11;
+
+			// valor min e max para os numeros
+			const MINN = 1;
+			const MAXN = 50;
+			
+			function ordena(a,b) {
+				return (a-b);
+			}
+			
+			// função para sortear numeros
+			// vai servir tanto para números como estrelas
+			// numeroMax: 				representa número máximo a sortear
+			// quantidadeNumeroSortear:	representa número de elementos a sortear
+			
+			function sorteiaNumeros(numeroMax, quantidadeNumeroSortear){
+				// armazena os vários números para sorteio
+				var tombola = new Array();
+				// armazena os números sorteados
+				var numSorteados = new Array();
+				// encher tombola com todos os números possíveis para sorteio
+				for(var i=0; i<numeroMax; i++ ) {
+					tombola.push(i+1);
+				}
+			
+				// sortear números
+				for(var i=0; i<quantidadeNumeroSortear; i++ ) {
+					// sortear posicao de tombola
+					var pos = Math.floor(Math.random()*tombola.length);
+					// obter numero na posicao sorteada
+					var numSorteado = tombola[pos];
+				//	alert("Número sorteado: " + numSorteado);
+				//	alert(tombola);
+					// retirar numero sorteado da tombola
+					tombola.splice(pos, 1);
+				//	alert(tombola);
+					
+					numSorteados.push(numSorteado);
+				}
+				// ordenar números sorteados
+				numSorteados.sort(ordena);
+				return numSorteados;
+			}
+			
+			// função para escrever números e estrelas de uma chave sorteada na página
+			function escreveNumeros(numerosSorteados, nomeClass){
+				var odivchaves = document.getElementById("chaves");
+
+				var alistanum = document.createElement("ul");
+				alistanum.setAttribute("class", nomeClass);
+				for(var i=0; i<numerosSorteados.length; i++) {
+					var oli = document.createElement("li");
+					oli.innerHTML=numerosSorteados[i];
+					alistanum.appendChild(oli);
+				}
+				odivchaves.appendChild(alistanum);
+			}
+			
+			function escreveNumerosComJQuery(numerosSorteados, nomeClass){
+				var odivchaves = $("#chaves");
+				
+				var alistanum = $("<ul>");
+				alistanum.attr("class", nomeClass);
+				alistanum.appendTo(odivchaves);
+				
+				for(var i=0; i<numerosSorteados.length; i++) {
+					var oli = $("<li>" + numerosSorteados[i] + "</li>");
+					oli.appendTo(alistanum);
+				}
+			}
+			
+			// outra forma de escrever a função anterior
+			function escreveNumerosComJQuery_Compressed(numerosSorteados, nomeClass){
+				$("<ul>").attr("class", nomeClass).appendTo($("#chaves"));
+				for(var i=0; i<numerosSorteados.length; i++)
+					$("<li>" + numerosSorteados[i] + "</li>").appendTo($("#chaves ul." + nomeClass + ":last"));  // :last - filtra o último elemento encontrado
+			}
+			
+			function geraChave(){
+				var numeros = sorteiaNumeros(MAXN, NN);
+				//alert("Números: " + numeros);
+				//escreveNumeros(numeros, "numeros");
+				
+				escreveNumerosComJQuery_Compressed(numeros, "numeros");
+				
+				var estrelas = sorteiaNumeros(MAXE, NE);
+				//alert("Estrelas: " + estrelas);
+				//escreveNumeros(estrelas, "estrelas");
+				escreveNumerosComJQuery_Compressed(estrelas, "estrelas");
+			}
+			
+		$(document).ready(function(){
+			$("input").click(function(){
+				geraChave();
+			});
+		});
+
+		</script>
+		
+	</head>
+	<body>
+		<input type="button" value="gera chave" />
+		<div id="chaves"></div>
+	</body>
+</html>

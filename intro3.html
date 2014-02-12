@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<style>
+		.c1{
+			color:red;
+		}
+		.c2{
+			color:green;
+		}
+		.c3{
+			color:blue;
+		}
+	</style>
+	
+	<script>
+	$(document).ready(function(){
+		// atribuição de evento através do tipo de elemento HTML
+		$("button").click(function(){
+			var html = $("<p class='c3'>Hello! Este parágrafo foi criado com JQuery!</p>");
+			html.appendTo("#content");
+		});
+	});
+	</script>
+	
+</head>
+<body>
+	<h1>Criar novos elementos HTML com JQuery</h1>
+	
+	<button type="button">Click Me!</button>
+	
+	<div id="content"> </div>
+	
+	<br><br><br>
+	<a href="intro.html">Voltar</a>
+</body>
+</html>
